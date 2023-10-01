@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
-
+[DefaultExecutionOrder(-1)]
 public class CardDatabase : MonoBehaviour
 {
     public TextAsset csvFile;  // 指向你导入的CSV文件的引用
@@ -13,16 +13,36 @@ public class CardDatabase : MonoBehaviour
     public List<Card> cardList = new List<Card>();
 
     public int[] dailyCardIDs;
-    public int currentDay = 0;
 
-    void Start()
+    public List<Card> cardsForToday = new List<Card>();
+    public int currentDay;
+    public static bool IsDataLoaded = false;
+    void Awake()
     {
-        
+        //DontDestroyOnLoad(this.gameObject);
         Addressables.LoadAssetAsync<TextAsset>("CardData.csv").Completed += OnCardDataLoaded;
+        Debug.Log("awake");
+        
+    }
+
+    void Initialize()
+    {  
+    Debug.Log(cardList.Count);  // 这里应该会显示正确的数量
+    dailyCardIDs = new int[15] { 1, 7, 9, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15 };
+    currentDay = GameManager.Instance.currentDay;
+    List<Card> cardsToday = GetCardsForTheDay();
+    IsDataLoaded = true;
+    // 其他初始化逻辑
+    }
+   /*  void Start()
+    {
+        Debug.Log(cardList.Count);
         dailyCardIDs = new int[15] { 1, 7, 9, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15 };
         List<Card> cardsToday = GetCardsForTheDay();
+       
+        
         //Debug.Log(cardList[0].cardName);
-    }
+    } */
 
     void OnCardDataLoaded(AsyncOperationHandle<TextAsset> obj)
     {
@@ -30,6 +50,7 @@ public class CardDatabase : MonoBehaviour
         {
             csvFile = obj.Result;
             ParseCSV();
+            Initialize();   
         }
         else
         {
@@ -73,7 +94,9 @@ public class CardDatabase : MonoBehaviour
                 }
             }
             cardList.Add(cd);
+            //Debug.Log(cardList[i-1].cardName);
         }
+        //Debug.Log(cardList.Count);
     }
     public Card GetCardByID(int id)
     {
@@ -87,12 +110,16 @@ public class CardDatabase : MonoBehaviour
         return null; // 如果没有找到对应ID的卡片则返回null
     }
 
-    public List<Card> GetCardsForTheDay()
+     public int GetDailyCardID(int num)
     {
-        List<Card> cardsForToday = new List<Card>();
-
+       int id = cardsForToday[num].cardID;
+        return id;    
+    }
+    public List<Card> GetCardsForTheDay()
+    { 
         // 根据当前的日期，获取卡片ID
         int cardStartIndex = currentDay * 3;  // 每天3张卡片
+        Debug.Log("currentDay " + currentDay);
         for (int i = 0; i < 3; i++)
         {
             if(cardStartIndex + i < dailyCardIDs.Length)
@@ -101,10 +128,10 @@ public class CardDatabase : MonoBehaviour
                 if (cardToAdd != null)
                 {
                     cardsForToday.Add(cardToAdd);
+                    Debug.Log("Card added: " + cardToAdd.cardID);
                     Debug.Log("Card added: " + cardToAdd.cardName);
                 }
             }   
-            Debug.Log(i);
             
         }
 
