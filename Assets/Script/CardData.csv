@@ -1,0 +1,16 @@
+id,cardname,cardimage,description,option1,jumpto1,time1,pressure1,health1,performance1 ,satisfaction1,option2,jumpto2,time2,pressure2,health2,performance2,satisfaction2,option3,jumpto3,time3,pressure3,health3,performance3,satisfaction3
+1,FireDragon1,FireDragon.png,this is a fuuuuuuuking fireDragon,burn1,2,5,1,11,1,1,kill1,3,1,2,1,2,2,leave,-1,2,1,2,3,2
+2,FireDragon2,FireDragon.png,this is a fuuuuuuuking fireDragon,burn2,2,5,1,11,1,1,kill2,3,1,2,1,2,2,None,-1,-1,-1,-1,-1,-1
+3,FireDragon3,FireDragon.png,this is a fuuuuuuuking fireDragon,burn3,2,5,1,11,1,1,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+4,FireDragon4,FireDragon.png,this is a fuuuuuuuking fireDragon,burn1,2,5,1,11,1,1,kill1,3,1,2,1,2,2,leave,-1,2,1,2,3,2
+5,FireDragon5,FireDragon.png,this is a fuuuuuuuking fireDragon,burn2,2,5,1,11,1,1,kill2,3,1,2,1,2,2,None,-1,-1,-1,-1,-1,-1
+6,FireDragon6,FireDragon.png,this is a fuuuuuuuking fireDragon,burn3,2,5,1,11,1,1,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+7,FireDragon7,FireDragon.png,this is a fuuuuuuuking fireDragon,burn1,2,5,1,11,1,1,kill1,3,1,2,1,2,2,leave,-1,2,1,2,3,2
+8,FireDragon8,FireDragon.png,this is a fuuuuuuuking fireDragon,burn2,2,5,1,11,1,1,kill2,3,1,2,1,2,2,None,-1,-1,-1,-1,-1,-1
+9,FireDragon9,FireDragon.png,this is a fuuuuuuuking fireDragon,burn3,2,5,1,11,1,1,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+10,FireDragon10,FireDragon.png,this is a fuuuuuuuking fireDragon,burn1,2,5,1,11,1,1,kill1,3,1,2,1,2,2,leave,-1,2,1,2,3,2
+11,FireDragon11,FireDragon.png,this is a fuuuuuuuking fireDragon,burn2,2,5,1,11,1,1,kill2,3,1,2,1,2,2,None,-1,-1,-1,-1,-1,-1
+12,FireDragon12,FireDragon.png,this is a fuuuuuuuking fireDragon,burn3,2,5,1,11,1,1,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+13,FireDragon13,FireDragon.png,this is a fuuuuuuuking fireDragon,burn1,2,5,1,11,1,1,kill1,3,1,2,1,2,2,leave,-1,2,1,2,3,2
+14,FireDragon14,FireDragon.png,this is a fuuuuuuuking fireDragon,burn2,2,5,1,11,1,1,kill2,3,1,2,1,2,2,None,-1,-1,-1,-1,-1,-1
+15,FireDragon15,FireDragon.png,this is a fuuuuuuuking fireDragon,burn3,2,5,1,11,1,1,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
