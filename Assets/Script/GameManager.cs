@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int pressure = 100;
     public int satisfaction = 100;
     public int performance = 100;
+    public int time = 0;
 
     // 保存时使用的关键字
     private const string DAY_KEY = "CurrentDay";
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     private const string PRESSURE_KEY = "Pressure";
     private const string SATISFACTION_KEY = "Satisfaction";
     private const string PERFORMANCE_KEY = "Performance";
+    private const string TIME_KEY = "Time";
 
     private void Awake()
     {
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(HEALTH_KEY, health);
         PlayerPrefs.SetInt(SATISFACTION_KEY, satisfaction);
         PlayerPrefs.SetInt(PERFORMANCE_KEY, performance);
+        PlayerPrefs.SetInt(TIME_KEY, time);
+        PlayerPrefs.SetInt(PRESSURE_KEY, pressure);
     }
 
     // 从PlayerPrefs加载游戏数据
@@ -75,10 +79,25 @@ public class GameManager : MonoBehaviour
         {
             performance = PlayerPrefs.GetInt(PERFORMANCE_KEY);
         }
+        if (PlayerPrefs.HasKey(TIME_KEY))
+        {
+            time = PlayerPrefs.GetInt(TIME_KEY);
+        }
+        if (PlayerPrefs.HasKey(PRESSURE_KEY))
+        {
+            pressure = PlayerPrefs.GetInt(PRESSURE_KEY);
+        }
     }
-
+    
     // 这里还可以添加其他管理游戏逻辑和玩家状态的方法
-
+    public void UpdateStatus(int time, int pressure, int health, int performance, int satisfaction)
+    {
+        this.time += time;
+        this.pressure += pressure;
+        this.health += health;
+        this.performance += performance;
+        this.satisfaction += satisfaction;
+    }
    
 }
 

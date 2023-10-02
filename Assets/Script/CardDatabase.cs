@@ -21,29 +21,20 @@ public class CardDatabase : MonoBehaviour
     {
         //DontDestroyOnLoad(this.gameObject);
         Addressables.LoadAssetAsync<TextAsset>("CardData.csv").Completed += OnCardDataLoaded;
-        Debug.Log("awake");
+        //Debug.Log("awake");
         
     }
 
     void Initialize()
     {  
-    Debug.Log(cardList.Count);  // 这里应该会显示正确的数量
+    //Debug.Log(cardList.Count);  // 这里应该会显示正确的数量
     dailyCardIDs = new int[15] { 1, 7, 9, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15 };
     currentDay = GameManager.Instance.currentDay;
     List<Card> cardsToday = GetCardsForTheDay();
     IsDataLoaded = true;
     // 其他初始化逻辑
     }
-   /*  void Start()
-    {
-        Debug.Log(cardList.Count);
-        dailyCardIDs = new int[15] { 1, 7, 9, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15 };
-        List<Card> cardsToday = GetCardsForTheDay();
-       
-        
-        //Debug.Log(cardList[0].cardName);
-    } */
-
+   
     void OnCardDataLoaded(AsyncOperationHandle<TextAsset> obj)
     {
         if (obj.Status == AsyncOperationStatus.Succeeded)
@@ -119,7 +110,7 @@ public class CardDatabase : MonoBehaviour
     { 
         // 根据当前的日期，获取卡片ID
         int cardStartIndex = currentDay * 3;  // 每天3张卡片
-        Debug.Log("currentDay " + currentDay);
+        //Debug.Log("currentDay " + currentDay);
         for (int i = 0; i < 3; i++)
         {
             if(cardStartIndex + i < dailyCardIDs.Length)
@@ -128,8 +119,8 @@ public class CardDatabase : MonoBehaviour
                 if (cardToAdd != null)
                 {
                     cardsForToday.Add(cardToAdd);
-                    Debug.Log("Card added: " + cardToAdd.cardID);
-                    Debug.Log("Card added: " + cardToAdd.cardName);
+                    //Debug.Log("Card added: " + cardToAdd.cardID);
+                    //Debug.Log("Card added: " + cardToAdd.cardName);
                 }
             }   
             
