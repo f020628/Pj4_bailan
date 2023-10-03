@@ -38,7 +38,7 @@ public class CardDisplay : MonoBehaviour
                     int jumpToId = cardData.options[i].jumpToId;
                     optionsUI[i].optionButton.onClick.AddListener(() => JumpToCard(jumpToId));
                     //Debug.Log("jumpto " + i + " is " + jumpToId);
-                    int time = cardData.options[i].time;
+                    float time = cardData.options[i].time;
                     int pressure = cardData.options[i].pressure;
                     int health = cardData.options[i].health;
                     int performance = cardData.options[i].performance;

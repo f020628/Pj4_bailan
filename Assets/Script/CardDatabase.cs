@@ -71,7 +71,7 @@ public class CardDatabase : MonoBehaviour
                     {
                         choiceText = row[baseIndex],
                         jumpToId = int.Parse(row[baseIndex + 1]),
-                        time = int.Parse(row[baseIndex + 2]),
+                        time = float.Parse(row[baseIndex + 2]),
                         pressure = int.Parse(row[baseIndex + 3]),
                         health = int.Parse(row[baseIndex + 4]),
                         performance = int.Parse(row[baseIndex + 5]),

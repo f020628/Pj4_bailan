@@ -10,7 +10,7 @@ public class CardOption
 {
     public string choiceText;
     public int jumpToId;  // Jump to this card ID when this option is selected
-    public int time;
+    public float time;
     public int pressure;
     public int health;
     public int performance;

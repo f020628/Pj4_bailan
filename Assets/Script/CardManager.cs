@@ -19,7 +19,7 @@ public class CardManager : MonoBehaviour
 
     private int day;
 
-    private int GetTime()
+    private float GetTime()
     {
         // 返回当前的time值
         return GameManager.Instance.time;

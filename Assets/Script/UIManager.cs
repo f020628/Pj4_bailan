@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text satisfactionText;    // 拖拽你的Satisfaction UI Text组件到这里
     public TMP_Text performanceText;    // 拖拽你的Performance UI Text组件到这里
     
-    int maxTime = 12;
+    float maxTime = 12;
 
     // 单例模式，使得这个脚本可以在任何地方被访问
     public static UIManager Instance;
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
         return GameManager.Instance.health;
     }
 
-    private int GetTime()
+    private float GetTime()
     {
         // 返回当前的time值
         return GameManager.Instance.time;

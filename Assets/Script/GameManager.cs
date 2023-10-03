@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int pressure = 100;
     public int satisfaction = 100;
     public int performance = 100;
-    public int time = 0;
+    public float time = 0;
 
     // 保存时使用的关键字
     private const string DAY_KEY = "CurrentDay";
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(HEALTH_KEY, health);
         PlayerPrefs.SetInt(SATISFACTION_KEY, satisfaction);
         PlayerPrefs.SetInt(PERFORMANCE_KEY, performance);
-        PlayerPrefs.SetInt(TIME_KEY, time);
+        PlayerPrefs.SetFloat(TIME_KEY, time);
         PlayerPrefs.SetInt(PRESSURE_KEY, pressure);
     }
 
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("End");
     }
-    public void UpdateStatus(int time, int pressure, int health, int performance, int satisfaction)
+    public void UpdateStatus(float time, int pressure, int health, int performance, int satisfaction)
     {
         string displayText = "";
 
