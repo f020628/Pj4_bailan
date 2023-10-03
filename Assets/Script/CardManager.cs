@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
+using TMPro;
+
 
 [DefaultExecutionOrder(0)]
 public class CardManager : MonoBehaviour
@@ -12,8 +14,16 @@ public class CardManager : MonoBehaviour
     public GameObject cardPrefab3;  // 卡牌的预制件
     public CardDatabase cardDatabase;  // 之前创建的卡牌数据库
     public static CardManager Instance;
+    public GameObject endOfDayPanel;  // 拖拽你的EndOfDayPanel到这里
+    public TMP_Text endOfDayPanelText;
 
     private int day;
+
+    private int GetTime()
+    {
+        // 返回当前的time值
+        return GameManager.Instance.time;
+    }   
     private void Awake()
     {
         if (Instance == null)
@@ -24,6 +34,8 @@ public class CardManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        endOfDayPanel.SetActive(false);
     }
 
   private IEnumerator Start()
@@ -72,15 +84,57 @@ public class CardManager : MonoBehaviour
     }
     public void StartNewDay()
     {
-        GameManager.Instance.currentDay++;
-        // 如果需要刷新整个场景：
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
-        // 如果不需要重新加载场景，直接加载新卡：
-        //LoadCardsForDay(GameManager.Instance.currentDay);
+        StartCoroutine(StartNewDayCoroutine());
     }
 
-   
+   IEnumerator StartNewDayCoroutine()
+    {
+
+        string endOfDayText;
+
+        if ( GetTime() < 4)
+        {
+            endOfDayText = "You don't seem very eager to keep working, I suppose.";
+            GameManager.Instance.UpdateStatus(0, -5, +5, -10, -5);
+        }
+        else if (GetTime() >= 4 && GetTime() < 8)
+        {
+            endOfDayText = "You got off work too early today.";
+            GameManager.Instance.UpdateStatus(0, -3, +3, -5, -3);
+        }
+        else if (GetTime() == 8)
+        {
+            endOfDayText = "You got off work early today.";
+            GameManager.Instance.UpdateStatus(0, 0, 0, -2, 0);
+        }
+        else if (GetTime() > 8 && GetTime() < 12)
+        {
+            endOfDayText = "You worked reasonable hours today.";
+            GameManager.Instance.UpdateStatus(0, 1, 0, -1, 1);
+        }
+        else
+        {
+            endOfDayText = "You're a good worker.";
+            GameManager.Instance.UpdateStatus(0, 3, -2, 2, 2);
+        }
+
+        endOfDayPanelText.text = endOfDayText;
+
+        endOfDayPanel.SetActive(true);
+
+        // 等待5秒
+        yield return new WaitForSeconds(5f);
+
+        // 进到下一天
+        GameManager.Instance.currentDay++;
+
+        // 刷新整个场景或者进行其他操作
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+
+        // 如果不需要重新加载场景，直接加载新卡：
+        // LoadCardsForDay(GameManager.Instance.currentDay);
+    }
 
     public void ReplaceCard(int newCardId, GameObject oldCardObject)
 {

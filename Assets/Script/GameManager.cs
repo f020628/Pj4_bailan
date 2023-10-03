@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +26,9 @@ public class GameManager : MonoBehaviour
     private const string PERFORMANCE_KEY = "Performance";
     private const string TIME_KEY = "Time";
 
+    public TMP_Text statusChangeText;
+    public Canvas StatusBoard;  
+
     private void Awake()
     {
         // 确保场景中只有一个GameManager实例
@@ -35,17 +41,30 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        statusChangeText.gameObject.SetActive(false);
+        DontDestroyOnLoad(StatusBoard);
     }
 
     private void Start()
     {
-        LoadGameData();  // 启动时加载保存的数据
+        //LoadGameData();  // 启动时加载保存的数据
+    }
+
+    void Update()
+    {
+        if (time >= 12)
+        {
+            CardManager.Instance.StartNewDay();
+            time=0;
+        }
+        checkMaxStatus();
+
     }
 
     public void EndDayAndLoadNext()
     {
         currentDay++;
-        SaveGameData(); // 保存游戏数据
+        //SaveGameData(); // 保存游戏数据
         // 重新加载场景或其他逻辑...
     }
 
@@ -90,14 +109,107 @@ public class GameManager : MonoBehaviour
     }
     
     // 这里还可以添加其他管理游戏逻辑和玩家状态的方法
+    public void GameOver()
+    {
+        SceneManager.LoadScene("End");
+    }
     public void UpdateStatus(int time, int pressure, int health, int performance, int satisfaction)
     {
+        string displayText = "";
+
+        if (time != 0)
+        {
+            displayText += time.ToString() + "\n";
+        }
+        else
+        {
+            displayText += "\n";
+        }
+        if (pressure != 0)
+        {
+            displayText += "\n" + pressure.ToString();
+        }
+        else
+        {
+            displayText += "\n";
+        }
+        if (health != 0)
+        {
+            displayText += "\n" + health.ToString();
+        }
+        else
+        {
+            displayText += "\n";
+        }
+        if (performance != 0)
+        {
+            displayText += "\n" + performance.ToString();
+        }
+        else
+        {
+            displayText += "\n";
+        }
+        if (satisfaction != 0)
+        {
+            displayText += "\n" + satisfaction.ToString();
+        }
+        
+        statusChangeText.text = displayText;
+        
+        statusChangeText.gameObject.SetActive(true);
+        StartCoroutine(HideStatusChangeTextAfterDelay(3.0f));
+
         this.time += time;
         this.pressure += pressure;
         this.health += health;
         this.performance += performance;
         this.satisfaction += satisfaction;
     }
-   
+   IEnumerator HideStatusChangeTextAfterDelay(float delay)
+    {
+    yield return new WaitForSeconds(delay);
+    statusChangeText.gameObject.SetActive(false);
+    }
+
+    void checkMaxStatus()
+    {
+        if (this.health > 100)
+        {
+            this.health = 100;
+        }
+        if (this.health < 0)
+        {
+            this.health = 0;
+            GameOver();
+        }
+        if (this.pressure > 100)
+        {
+            this.pressure = 100;
+            GameOver();
+        }   
+        if (this.pressure < 0)
+        {
+            this.pressure = 0;
+        }
+        if (this.satisfaction > 100)
+        {
+            this.satisfaction = 100;
+        }
+        if (this.satisfaction < 0)
+        {
+            this.satisfaction = 0;
+            GameOver();
+        }
+        if (this.performance > 100)
+        {
+            this.performance = 100;
+        }
+        if (this.performance < 0)
+        {
+            this.performance = 0;
+            GameOver();
+        }
+        
+    }
 }
 

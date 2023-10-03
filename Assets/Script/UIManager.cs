@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     
     int maxTime = 12;
 
+    // 单例模式，使得这个脚本可以在任何地方被访问
+    public static UIManager Instance;
+
 
 
     // 假设你有一个方法可以获取当前的pressure和health值
@@ -59,5 +62,7 @@ public class UIManager : MonoBehaviour
         timeSlider.value = GetTime() / maxTime;
 
     }
+
+    
 }
 
