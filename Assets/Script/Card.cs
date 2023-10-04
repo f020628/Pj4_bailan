@@ -23,7 +23,7 @@ public class Card : ScriptableObject
     public int cardID;
     public string cardName;
     public string description;
-    //public Sprite cardImage;
+    public Sprite cardImage;
     public  CardOption[] options = new CardOption[3];
 }
 

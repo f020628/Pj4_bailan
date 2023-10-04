@@ -1091,6 +1091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardData: {fileID: 0}
+  cardImage: {fileID: 3258090885322061171}
   cardNameText: {fileID: 3840440907483332217}
   cardDescriptionText: {fileID: 5300594213733984992}
   optionsUI:

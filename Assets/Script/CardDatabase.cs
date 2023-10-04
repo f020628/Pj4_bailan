@@ -19,16 +19,16 @@ public class CardDatabase : MonoBehaviour
     public static bool IsDataLoaded = false;
     void Awake()
     {
-        //DontDestroyOnLoad(this.gameObject);
+       
         Addressables.LoadAssetAsync<TextAsset>("CardData.csv").Completed += OnCardDataLoaded;
-        //Debug.Log("awake");
+       
         
     }
 
     void Initialize()
     {  
     //Debug.Log(cardList.Count);  // 这里应该会显示正确的数量
-    dailyCardIDs = new int[15] { 1, 7, 9, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15 };
+    dailyCardIDs = new int[9] { 1, 23, 37, 52, 5, 6, 7, 8, 9 };
     currentDay = GameManager.Instance.currentDay;
     List<Card> cardsToday = GetCardsForTheDay();
     IsDataLoaded = true;
@@ -59,7 +59,7 @@ public class CardDatabase : MonoBehaviour
             Card cd = ScriptableObject.CreateInstance<Card>();
             cd.cardID = int.Parse(row[0]);
             cd.cardName = row[1];
-            //cd.cardImage = Resources.Load<Sprite>(row[2]);  // 假设你将卡片图片放在Resources文件夹下
+            cd.cardImage = Resources.Load<Sprite>(row[2].Replace(".png", ""));  // 假设你将卡片图片放在Resources文件夹下
             cd.description = row[3];
             // Process options
             for (int j = 0; j < 3; j++)
@@ -85,9 +85,9 @@ public class CardDatabase : MonoBehaviour
                 }
             }
             cardList.Add(cd);
-            //Debug.Log(cardList[i-1].cardName);
+           
         }
-        //Debug.Log(cardList.Count);
+        
     }
     public Card GetCardByID(int id)
     {
@@ -110,7 +110,7 @@ public class CardDatabase : MonoBehaviour
     { 
         // 根据当前的日期，获取卡片ID
         int cardStartIndex = currentDay * 3;  // 每天3张卡片
-        //Debug.Log("currentDay " + currentDay);
+    
         for (int i = 0; i < 3; i++)
         {
             if(cardStartIndex + i < dailyCardIDs.Length)
@@ -119,8 +119,7 @@ public class CardDatabase : MonoBehaviour
                 if (cardToAdd != null)
                 {
                     cardsForToday.Add(cardToAdd);
-                    //Debug.Log("Card added: " + cardToAdd.cardID);
-                    //Debug.Log("Card added: " + cardToAdd.cardName);
+                    
                 }
             }   
             

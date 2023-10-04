@@ -15,14 +15,15 @@ public class Ending : MonoBehaviour
     int pressure = GameManager.Instance.pressure;
     int satisfaction = GameManager.Instance.satisfaction;
     int performance = GameManager.Instance.performance;
-
+    GameManager.Instance.resetAll(); 
+    //Debug.Log("day " + GameManager.Instance.currentDay);   
     showEnding(health,pressure,performance,satisfaction);
 
     }
 
    void showEnding(int health,int pressure,int performance ,int satisfaction)
    {
-        string displayText = "";
+        string displayText = "Welldone!";
 
         if (pressure == 100)
         {

@@ -12,10 +12,10 @@ public class GameManager : MonoBehaviour
 
     // 游戏状态和玩家属性
     public int currentDay = 0;
-    public int health = 100;
-    public int pressure = 100;
-    public int satisfaction = 100;
-    public int performance = 100;
+    public int health = 80;
+    public int pressure = 20;
+    public int satisfaction = 50;
+    public int performance = 20;
     public float time = 0;
 
     // 保存时使用的关键字
@@ -58,6 +58,10 @@ public class GameManager : MonoBehaviour
             time=0;
         }
         checkMaxStatus();
+        if (currentDay == 3)
+        {
+            GameOver();
+        }
 
     }
 
@@ -210,6 +214,16 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
         
+    }
+
+    public void resetAll()
+    {
+        currentDay = 0;
+        health = 80;
+        pressure = 20;
+        satisfaction = 50;
+        performance = 20;
+        time = 0;
     }
 }
 

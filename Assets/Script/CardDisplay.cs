@@ -7,7 +7,7 @@ using TMPro;
 public class CardDisplay : MonoBehaviour
 {
     public Card cardData;
-    //public Image cardImage;
+    public Image cardImage;
     public TMP_Text cardNameText;
     public TMP_Text cardDescriptionText;
 
@@ -23,7 +23,7 @@ public class CardDisplay : MonoBehaviour
 
     public void DisplayCard(Card cardData)
     {
-        //cardImage.sprite = cardData.cardImage;
+        cardImage.sprite = cardData.cardImage;
         cardNameText.text = cardData.cardName;
         cardDescriptionText.text = cardData.description;
 
@@ -61,7 +61,7 @@ public class CardDisplay : MonoBehaviour
      public void JumpToCard(int jumpToId)
     {
     // Call a method in CardManager to replace the current card
-    Debug.Log("jumpto " + jumpToId);
+    //Debug.Log("jumpto " + jumpToId);
     CardManager.Instance.ReplaceCard(jumpToId, this.gameObject);
     }
 
