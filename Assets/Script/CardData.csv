@@ -66,3 +66,13 @@ id,cardname,cardimage,description,option1,jumpto1,time1,pressure1,health1,perfor
 65,Small-Scale Robbery Case,ConStore.png,"Analyze the video and discover special soil on the robber's shoes, leading to his hiding place and capture.",END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
 66,Small-Scale Robbery Case,ConStore.png,Eyewitnesses provide crucial information that helps in the robber's arrest.,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
 67,Small-Scale Robbery Case,ConStore.png,Find the robber in a nearby abandoned building and apprehend him.,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+68,Flower Shop Heist,Flowerstore.png,You are an ordinary police officer who received a report of a robbery. A robber has broken into a flower shop and threatened the owner to hand over all the cash.,Examine the Flower Shop's Surveillance Footage,69,2,2,0,3,-1,Contact Other Police Units for Assistance,70,1,1,0,2,1,Verify the Authenticity of the Report,71,1,1,0,2,-2
+69,Flower Shop Heist,Flowerstore.png,You observe a blurry image of the robber in the surveillance footage.,Analyze the Surveillance Footage,72,3,3,0,4,1,Search Nearby Blocks,73,3,3,0,4,0,None,-1,-1,-1,-1,-1,-1
+70,Flower Shop Heist,Flowerstore.png,You decide to contact the Special Response Team for assistance.,Collaborate with the Special Response Team,74,4,4,-2,5,3,Seek Help from a Crime Analyst,75,3,3,0,4,2,None,-1,-1,-1,-1,-1,-1
+71,Flower Shop Heist,Flowerstore.png,You start to doubt the authenticity of the report.,Proceed to the Flower Shop,76,2,2,0,3,0,Investigate the Background of the Reporter,77,3,3,0,4,-1,None,-1,-1,-1,-1,-1,-1
+72,Flower Shop Heist,Flowerstore.png,,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+73,Flower Shop Heist,Flowerstore.png,,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+74,Flower Shop Heist,Flowerstore.png,,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+75,Flower Shop Heist,Flowerstore.png,,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+76,Flower Shop Heist,Flowerstore.png,,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
+77,Flower Shop Heist,Flowerstore.png,,END,-1,0,0,0,0,0,None,-1,-1,-1,-1,-1,-1,None,-1,-1,-1,-1,-1,-1
