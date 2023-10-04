@@ -117,6 +117,7 @@ public class CardManager : MonoBehaviour
             endOfDayText = "You're a good worker.";
             GameManager.Instance.UpdateStatus(0, 3, -2, 2, 2);
         }
+        GameManager.Instance.time = 0;
 
         endOfDayPanelText.text = endOfDayText;
 
