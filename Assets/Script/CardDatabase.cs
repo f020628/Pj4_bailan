@@ -28,7 +28,7 @@ public class CardDatabase : MonoBehaviour
     void Initialize()
     {  
     //Debug.Log(cardList.Count);  // 这里应该会显示正确的数量
-    dailyCardIDs = new int[9] { 1, 23, 37, 52, 5, 6, 7, 8, 9 };
+    dailyCardIDs = new int[9] { 1, 23, 37, 52, 68, 6, 7, 8, 9 };
     currentDay = GameManager.Instance.currentDay;
     List<Card> cardsToday = GetCardsForTheDay();
     IsDataLoaded = true;
